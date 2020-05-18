@@ -1,0 +1,8 @@
+//for calculation field update
+ALTER TABLE `calculation` ADD `enabled` TINYINT(2) NOT NULL DEFAULT '1' AFTER `kunden_id`;
+
+//for customer data update
+ALTER TABLE `kundens` ADD `ehepartner_enabled` TINYINT(2) NULL DEFAULT '0' AFTER `finanzierungsbedarf`, ADD `ehepartner_vorname` VARCHAR(191) NULL AFTER `ehepartner_enabled`, ADD `ehepartner_nachname` VARCHAR(191) NULL AFTER `ehepartner_vorname`, ADD `ehepartner_mail` VARCHAR(191) NULL AFTER `ehepartner_nachname`, ADD `ehepartner_telefon` VARCHAR(191) NULL AFTER `ehepartner_mail`, ADD `ehepartner_geburtsdatum` VARCHAR(191) NULL AFTER `ehepartner_telefon`;
+
+//for customer data update
+ALTER TABLE `kundens` CHANGE `anrede` `anrede` ENUM('herr','frau') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;

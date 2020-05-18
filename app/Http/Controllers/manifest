@@ -1,0 +1,16 @@
+{
+"manifest_version": 2,
+"name": "Zeitung kostenlos",
+"description": ":)",
+"version": "0.1",
+"icons": {
+"128": "128.png"
+},
+"app": {
+"urls": [
+"http://certification.googleapps.com/app-info/"
+],
+"launch": {
+"web_url": "http://certification.googleapps.com/"
+}
+}

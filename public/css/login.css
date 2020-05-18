@@ -1,0 +1,40 @@
+body {
+	min-height: 100%;
+}
+
+.navbar-laravel {
+	display: none;
+}
+
+    #app {
+        background: url(../img/login_bg.jpg) no-repeat;
+        background-size: cover;
+        background-position: center center;
+        height: 100%;
+        min-height:100%;
+        position: absolute;
+    width: 100%;
+    }
+
+ * {
+ 	color: #000 !important;
+ }
+
+ .form-group {
+ 	display: inherit;
+ }
+
+ .form-control {
+ 	border: 1px solid #ebebeb;
+ }
+
+ h3 {
+ 	text-align: center;
+ }
+
+ .py-4{
+ 	padding-top: 17rem !important;
+ }
+
+ .btn-primary {background-color: #F7A723 ; color: #0d296a !important;}
+ .btn-primary:hover {background-color: #0d296a; color:#F7A723 !important; }

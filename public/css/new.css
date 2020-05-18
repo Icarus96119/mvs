@@ -1,0 +1,172 @@
+.form-group {
+	display: inline-block;
+}
+
+.container {
+  min-width: 1400px !important;
+  max-width: 1400px !important;
+}
+
+#finanzierungsbedarf {
+      box-shadow: 11px 0px 16px -10px #bbbbbb;
+
+}
+
+
+::placeholder{
+	color:#a8acb1 !important;
+}
+
+
+#finanzierungsbedarf .form-group {
+  display: inherit !important;
+}
+
+
+    .angebot {
+  color:#28367b !important;
+  font-size:35px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+table {
+            border: 3px solid lightgrey;
+            color: #5a5a5a !important;
+    }
+
+
+#optionen li {
+  list-style: none;
+}
+
+
+    #app {
+        background-image: url(../img/bg_app.jpg) !important;
+    background-position: 58% 20% !important;
+    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-attachment: fixed !important;
+    z-index: 0;
+    min-height: 100%;
+    }
+
+
+#angebote {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 40em;
+}
+
+#angebote li {
+  list-style: none;
+  padding:10px 10px 10px 0px;
+}
+
+
+.container{ max-width:1170px; padding: 0 15px; margin: 0 auto; }
+.clear{ clear: both; }
+ul,li{ list-style: none; padding: 0; margin: 0; }
+.box{ float: left; padding: 0; margin: 0; box-sizing: border-box; font-size:22px; line-height: 24px; font-weight: 600; color:#606060; }
+.box:nth-child(1){ width:14%; }
+.box:nth-child(2){ width:55%; margin: 0 15px 0 0; }
+.box:nth-child(3){ width:28%; }
+.box:nth-child(3) ul li{ float: left; }
+.box:nth-child(3) ul li:nth-child(1){ margin:24px 0 0 0; }
+.box:nth-child(3) ul li:nth-child(2) { border: 5px solid #f1ac38; text-align: center; padding: 10px; margin: 0 0 0 15px; }
+.box:nth-child(2) .top{ padding: 0 0 15px; margin: 0 0 15px 0; border-bottom:10px solid #f1ac38; position: relative; }
+.box:nth-child(2) .top ul li{ padding: 0; margin: 0 11% 0 -4px; float: left; }
+.box:nth-child(2) .top ul li:nth-child(1){ margin: 0 6% 0 20px; }
+.box:nth-child(2) .top ul li:nth-child(2){ margin: 0 23% 0 0;}
+.box:nth-child(2) .top ul li:nth-child(4){ margin: 0 5% 0 25px; }
+.box:nth-child(2) .top:after{ position: absolute; content: ""; width:10px; height:100px; background: #f1ac38; left: 0; top: -11px; }
+.box:nth-child(2) .top:before{ position: absolute; content: ""; width:10px; height:100px; background: #f1ac38; right: 0; top: -11px; }
+
+.box:nth-child(2) .bottom{ padding: 0; margin: 0; text-align: center; }
+.box:nth-child(2) .bottom ul li{ display: inline-block; padding: 0; margin: 0 0 0 0; }
+.box:nth-child(2) .bottom:before{ content: ""; position: absolute;  width:10px; height:38px; background: #f1ac38; top:445px; margin: 0 auto; }
+.box:nth-child(2) .bottom ul li:nth-child(1){ margin-right:115px; position: relative; top: -55px; }
+.box:nth-child(2) .bottom ul li.add{ margin-left: 115px; position: relative; top: -55px; }
+/*custom css*/
+.removeCard{
+  cursor: pointer;
+  color: red;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.mt-15{
+  margin-top: 15px;
+}
+.mt-25{
+  margin-top: 25px;
+}
+.mt-35{
+  margin-top: 35px;
+}
+.mb-15{
+  margin-bottom: 15px;
+}
+
+
+
+.check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+.check:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34,50,84,0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+.check:hover:before {
+  opacity: 1;
+}
+.check:hover svg {
+  stroke: #4285f4;
+}
+#cbx:checked + .check svg {
+  stroke: #4285f4;
+}
+#cbx:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+#cbx:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}

@@ -1,0 +1,31 @@
+
+.vl {
+border-left: 6px solid green;
+height: 150px;
+}
+.vl2 {
+border-left: 6px solid green;
+height: 50px;
+}
+.grid-down{
+border-bottom:3px solid gray
+}
+.grid-background{
+background-color:gray;
+color:Black
+}
+.grid-header{
+background-color:gray;
+color:Black;
+text-align:center
+}
+.grid-left{
+border-left:3px solid gray;
+text-align:right
+}
+.grid-bordder{
+border:3px solid gray
+}
+.sticker{
+background-color:#28367b !important;color:white;text-align:right;padding: 8px;
+}
