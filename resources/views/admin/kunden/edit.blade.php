@@ -114,16 +114,22 @@
                     $("#repayment_date").prop("checked", false);
                     $("#montly_deposit").prop("checked", false);
                     $("#payment_opt_rad").prop("checked", false);
+                    $("#bausparer").prop("checked", false);
                     $("#" + localStorage['radio_status']).prop("checked", true);
                 }  , 500 );
             }
 
             $("#bausparer").click(function () {
+                localStorage['radio_status'] = 'bausparer';
                 if ($(this).prop('checked') == true) {
                     $("#sparsumme").prop("disabled", false);
                     $("#laufzeit").prop("disabled", false);
                     $("#statements_due").prop("disabled", false);
                     $("#onetime_pay").prop("disabled", false);
+                    $("#running_time").prop("disabled", false);
+                    var e = document.getElementById("laufzeit");
+                    $("#running_time").val(e.options[e.selectedIndex].text);
+                    $("#running_time").prop("disabled", true);
                     $("#monthly_rate_pay").prop("disabled", false);
                     var total_price = parseInt($('#loan_amount').val().replace(/\./g,"").replace(",","."));
                     $('#sparsumme').val(total_price.toFixed(2).toString().replace(".", ","));
@@ -134,11 +140,17 @@
                     $("#statements_due").prop("disabled", true);
                     $("#onetime_pay").prop("disabled", true);
                     $("#monthly_rate_pay").prop("disabled", true);
+
+                    
                 }
             });
 
             // running time value change
             $('#laufzeit').change(function() {
+                $("#running_time").prop("disabled", false);
+                var e = document.getElementById("laufzeit");
+                $("#running_time").val(e.options[e.selectedIndex].text);
+                $("#running_time").prop("disabled", true);
                 monthly_total_price_remaining_debt();
             });
 
@@ -811,7 +823,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="kostennotar">Notar/Gericht ( <span name="kostennotar" class="text-danger">{{ number_format($kunden->kostennotar_value, 1, ',', '.') }}</span>€ )</label>
+                        <label for="kostennotar">Notar/Gericht ( <span name="kostennotar" class="text-danger">{{ number_format($kunden->kostennotar_value, 2, ',', '.') }}</span>€ )</label>
                         <div class="input-group">
                             <input type="text" class="form-control text-right" name="kostennotar" id="kostennotar"
                                    placeholder="{{ stringReplace($kunden->kostennotar, '.', ',') }}" value="{{ stringReplace(number_format($kunden->kostennotar, 1, '.', ','), '.', ',') }}">
@@ -827,11 +839,11 @@
                                $grunderwerbssteuer_value =  str_replace(",","",$kunden->grunderwerbssteuer_value);
                                $grunderwerbssteuer_value =  str_replace(".","",$grunderwerbssteuer_value);
                             @endphp -->
-                        <label for="grunderwerbssteuer">Grunderwerbssteuer ( <span name="grunderwerbssteuer" class="text-danger">{{ number_format($kunden->grunderwerbssteuer_value, 1, '.', ',')  }}</span>€ )</label>
+                        <label for="grunderwerbssteuer">Grunderwerbssteuer ( <span name="grunderwerbssteuer" class="text-danger">{{ number_format($kunden->grunderwerbssteuer_value, 2, ',', '.')  }}</span>€ )</label>
                         <div class="input-group">
                             <input type="text" class="form-control text-right" name="grunderwerbssteuer" id="grunderwerbssteuer"
                                    placeholder="{{ stringReplace($kunden->grunderwerbssteuer, '.', ',') }}" value="{{ stringReplace(number_format($kunden->grunderwerbssteuer, 1, '.', ','), '.', ',') }}">
-                            <input type="hidden" name="grunderwerbssteuer_value" value="{{ number_format($kunden->grunderwerbssteuer_value, 1, '.', ',') }}">
+                            <input type="hidden" name="grunderwerbssteuer_value" value="{{ number_format($kunden->grunderwerbssteuer_value, 1, ',', '.') }}">
                             <div class="input-group-append">
                                 <span class="input-group-text">%</span>
                             </div>
@@ -840,7 +852,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="maklerkosten">Maklerkosten ( <span name="maklerkosten" class="text-danger">{{ number_format($kunden->maklerkosten_value, 1, ',', '.') }}</span>€ )</label>
+                        <label for="maklerkosten">Maklerkosten ( <span name="maklerkosten" class="text-danger">{{ number_format($kunden->maklerkosten_value, 2, ',', '.') }}</span>€ )</label>
                         <div class="input-group">
                             <input type="text" class="form-control text-right" name="maklerkosten" id="maklerkosten"
                                    placeholder="0.00" value="{{ stringReplace(number_format($kunden->maklerkosten, 2, '.', ','), '.', ',') }}">
@@ -1259,6 +1271,9 @@
                                                         $('#repayment_date_inp').attr("disabled",false);
                                                         $('#montly_deposit_val').attr("disabled",true);
                                                         localStorage['radio_status'] = 'repayment_date';
+                                                        $("#running_time").prop("disabled", false);
+                                                        $("#running_time").val('');
+                                                        $("#running_time").prop("disabled", true);
                                                     });
                                                     $('#montly_deposit').click(function () {
                                                         $("#sparsumme").prop("disabled", true);
@@ -1269,6 +1284,9 @@
                                                         $('#repayment_date_inp').attr("disabled",true);
                                                         $('#montly_deposit_val').attr("disabled",false);
                                                         localStorage['radio_status'] = 'montly_deposit';
+                                                        $("#running_time").prop("disabled", false);
+                                                        $("#running_time").val('');
+                                                        $("#running_time").prop("disabled", true);
                                                     });
                                                     $('#new_rate').click(function () {
                                                         $('#new_rate_inp').attr("disabled",false);
@@ -1286,6 +1304,9 @@
                                                         $("#onetime_pay").prop("disabled", true);
                                                         $("#monthly_rate_pay").prop("disabled", true);
                                                         localStorage['radio_status'] = 'payment_opt_rad';
+                                                        $("#running_time").prop("disabled", false);
+                                                        $("#running_time").val('');
+                                                        $("#running_time").prop("disabled", true);
                                                     /*    var loan_period = parseInt($('#loan_period').val());
                                                         var borrowing_rate = parseFloat($('#borrowing_rate').val().replace(".", "").replace(",", "."));
                                                         var montly_deposit_val = parseFloat($('#montly_deposit_val').val().replace(".", "").replace(",", "."));
@@ -2859,10 +2880,20 @@
                                                     <td>Gesamtlaufzeit (Jahre/Monate)</td>
                                                     <td colspan="4">
                                                         <div class="input-group">
-                                                            <input id="total_maturity" class="form-control text-right" disabled>
+                                                            <input id="total_maturity" class="form-control text-right" disabled>&nbsp;
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">J/M</span>
                                                             </div>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Running time</td>
+                                                    <td colspan="4">
+                                                        <div class="input-group">
+                                                            <input id="running_time" class="form-control text-right" >
                                                         </div>
                                                     </td>
 

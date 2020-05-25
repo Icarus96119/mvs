@@ -4,6 +4,7 @@ namespace MVS\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use MVS\Angebote;
 use MVS\Kunden;
 use MVS\timeline;
@@ -235,6 +236,7 @@ class KundenController extends Controller
             ORDER BY SUBSTR(repayment_date, LENGTH(repayment_date)-3, LENGTH(repayment_date))');
         $new_repayments = DB::select('SELECT repayment_date years, zinsen, tilgung, darlehensrest, rate, sonder_tilgung FROM repayments');
         $CalData = DB::table('calc_result')->where('kunden_id', $kunden->id)->get();
+        Log::debug($CalData);
         $timeline = timeline::where('kundens_id', $kunden->id)->get();
         return view('admin.kunden.show', ['kunden' => $kunden, 'repayments' => $repayments, 'timeline' => $timeline, 'CalData' => $CalData, 'years_repayments' => $years_repayments, 'new_repayments' => $new_repayments]);
     }
